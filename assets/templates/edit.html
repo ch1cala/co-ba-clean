@@ -3,7 +3,7 @@
     <div class="input-group">
       <input class="form-control" type="text" name="title" ng-model="category.title" placeholder="あたらしいカテゴリー名" required>
     <span class="input-group-btn">
-      <button class="btn btn-default" type="button" ng-class="{disabled:!CategoryForm.$valid}">追加</button>
+      <button class="btn btn-default" type="submit" ng-class="{disabled:!CategoryForm.$valid}">追加</button>
     </span>
     </div>
     <div ng-show="CategoryForm.$dirty && !CategoryForm.$valid">
@@ -27,7 +27,7 @@
       <div class="input-group">
         <input class="form-control" type="text" name="title" ng-model="task.title" placeholder="あたらしい作業内容" required>
         <span class="input-group-btn">
-          <button class="btn btn-default" type="button" ng-class="{disabled:!TaskForm.$valid}">追加</button>
+          <button class="btn btn-default" type="submit" ng-class="{disabled:!TaskForm.$valid}">追加</button>
         </span>
       </div>
       <div ng-show="TaskForm.$dirty && !TaskForm.$valid">
