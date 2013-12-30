@@ -1,0 +1,43 @@
+<form class="panel panel-default" name="CategoryForm" ng-submit="addCategory()">
+  <div class="panel-body">
+    <div class="input-group">
+      <input class="form-control" type="text" name="title" ng-model="category.title" placeholder="あたらしいカテゴリー名" required>
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button" ng-class="{disabled:!CategoryForm.$valid}">追加</button>
+    </span>
+    </div>
+    <div ng-show="CategoryForm.$dirty && !CategoryForm.$valid">
+      <div class="text-warning" ng-show="CategoryForm.title.$error.required">カテゴリー名は必須です</div>
+    </div>
+  </div>
+</form>
+
+<div class="panel panel-default" ng-repeat="category in categories track by $index" ng-if="category.show">
+
+  <div class="panel-heading">
+    {{ category.title }}
+    <a ng-click="taskInput=!taskInput">
+      <i class="glyphicon glyphicon-plus" ng-show="!taskInput"></i>
+      <i class="glyphicon glyphicon-minus" ng-show="taskInput"></i>
+    </a>
+  </div>
+
+  <div class="panel-body" ng-show="taskInput">
+    <form name="TaskForm" ng-submit="addTask($index)">
+      <div class="input-group">
+        <input class="form-control" type="text" name="title" ng-model="task.title" placeholder="あたらしい作業内容" required>
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" ng-class="{disabled:!TaskForm.$valid}">追加</button>
+        </span>
+      </div>
+      <div ng-show="TaskForm.$dirty && !TaskForm.$valid">
+        <div class="text-warning" ng-show="TaskForm.title.$error.required">作業内容は必須です</div>
+      </div>
+    </form>
+  </div>
+
+  <ul class="list-group" ng-repeat="task in tasks | filter:{category:$index} | orderBy:'-id' track by task.id">
+    <li class="list-group-item">{{ task.title }}</li>
+  </ul>
+
+</div>

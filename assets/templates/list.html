@@ -1,0 +1,37 @@
+<div>
+  作業者名：
+  <input type="text" ng-model="staff" placeholder="おなまえ">
+</div>
+
+<ul class="nav nav-tabs">
+  <li>
+    <a href="" ng-click="reverse=true" ng-show="!reverse"><i class="glyphicon glyphicon-arrow-down"></i></a>
+    <a href="" ng-click="reverse=false" ng-show="reverse"><i class="glyphicon glyphicon-arrow-up"></i></a>
+  </li>
+  <li><a href="" ng-click="sort='checkedAt'">作業日時</a></li>
+  <li><a href="" ng-click="sort='category'">カテゴリー</a></li>
+  <li><a href="" ng-click="sort='staff'">作業者</a></li>
+</ul>
+
+<ul class="list-group" ng-repeat="task in tasks | orderBy:sort:reverse track by task.id">
+  <li class="list-group-item row">
+    <span class="col-md-1" ng-if="staff">
+      <button
+        ng-if="task.checkedAt + wait < now"
+        ng-click="done(task)"
+        class="btn btn-default">未完了</button>
+      <button
+        ng-if="task.checkedAt + wait >= now"
+        class="btn disabled">完了</button>
+    </span>
+    <span class="col-md-1" ng-if="!staff">{{ task.checkedAt + wait < now ? '未完了' : '完了' }}</span>
+    <span class="col-md-11">
+    [{{ categories[task.category].title }}]<br />
+    <small>{{ task.checkedAt | date:'yyyy-MM-dd HH:mm:ss' }}</small>
+    <strong>{{ task.title }}</strong>
+    <small ng-if="task.checkedAt">
+      作業者名：{{ task.staff }}
+    </small>
+    </span>
+  </li>
+</ul>

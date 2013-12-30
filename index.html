@@ -1,43 +1,29 @@
-<html>
+<!doctype html>
+<html lang="ja">
 <head>
+  <meta charset="utf-8">
   <title>クレンリネス引き継ぎ表</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="assets/libs/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/main.css">
+  <script src="assets/libs/angular/angular.js"></script>
+  <script src="assets/libs/angular-route/angular-route.js"></script>
+  <script src="assets/libs/angularLocalStorage/angularLocalStorage.js"></script>
+  <script src="assets/libs/angular-cookies/angular-cookies.js"></script>
 </head>
-<body>
+<body ng-app="tasksApp">
+
+<ul class="nav nav-tabs" ng-controller="NavCtrl">
+  <li ng-class="{active:isActive('/')}"><a href="#/">リスト</a></li>
+  <li ng-class="{active:isActive('/edit')}"><a href="#/edit">編集</a></li>
+</ul>
+
 <h1>co-baクレンリネス引き継ぎ表</h1>
 
-<h2>トイレ</h2>
-<form method="POST">
-  <ul style="list-style:none;">
-    <li>6F男子トイレ
-      <ul style="list-style:none;">
-        <input type="checkbox"><li style="display: inline">鏡の水はねを拭き取る</li><br>
-        <input type="checkbox"><li style="display: inline">洗面台の水を拭き取る</li><br>
-        <input type="checkbox"><li style="display: inline">トイレタンクの周りの埃を拭き取る</li><br>
-        <input type="checkbox"><li style="display: inline">便器の中をブラッシングする</li><br>
-        <input type="checkbox"><li style="display: inline">便座の周りをふく</li><br>
-        <input type="checkbox"><li style="display: inline">床をふく</li><br>
-        <input type="checkbox"><li style="display: inline">トイレットペーパー補充</li><br>
-        <input type="checkbox"><li style="display: inline">ペーパータオル補充</li><br>
-        <input type="checkbox"><li style="display: inline">ゴミ箱の中身を捨てる</li><br>
-      </ul>
-    </li><br><br>
-    <li>6F女子トイレ
-      <ul style="list-style:none;">
-        <input type="checkbox"><li style="display: inline">鏡の水はねを拭き取る</li><br>
-        <input type="checkbox"><li style="display: inline">洗面台の水を拭き取る</li><br>
-        <input type="checkbox"><li style="display: inline">トイレタンクの周りの埃を拭き取る</li><br>
-        <input type="checkbox"><li style="display: inline">便器の中をブラッシングする</li><br>
-        <input type="checkbox"><li style="display: inline">便座の周りをふく</li><br>
-        <input type="checkbox"><li style="display: inline">床をふく</li><br>
-        <input type="checkbox"><li style="display: inline">トイレットペーパー補充</li><br>
-        <input type="checkbox"><li style="display: inline">ペーパータオル補充</li><br>
-        <input type="checkbox"><li style="display: inline">ゴミ箱の中身を捨てる</li><br>
-        <input type="checkbox"><li style="display: inline">△コーナーのゴミ捨て</li><br>
-        <input type="checkbox"><li style="display: inline">綿棒補充</li><br>
-      </ul>
-    </li>
-  </ul>
-</form>
+<div ng-view></div>
+
+<script src="assets/main.js"></script>
+<script src="assets/controllers/list.js"></script>
+<script src="assets/controllers/edit.js"></script>
 </body>
 </html>
