@@ -26,9 +26,8 @@
     </span>
     <span class="col-md-1" ng-if="!staff">{{ task.checkedAt + wait < now ? '未完了' : '完了' }}</span>
     <span class="col-md-11">
-    [{{ categories[task.category].title }}]<br />
+    [{{ categories[task.category].title }}] <strong>{{ task.title }}</strong><br />
     <small>{{ task.checkedAt | date:'yyyy-MM-dd HH:mm:ss' }}</small>
-    <strong>{{ task.title }}</strong>
     <small ng-if="task.checkedAt">
       作業者名：{{ task.staff }}
     </small>
